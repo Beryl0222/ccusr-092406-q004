@@ -1,0 +1,8 @@
+[project]
+name = "heritage-workshop-safety"
+version = "0.1.0"
+description = "非遗体验安全放行领域资料"
+requires-python = ">=3.11"
+
+[tool.unittest]
+start-directory = "tests"
