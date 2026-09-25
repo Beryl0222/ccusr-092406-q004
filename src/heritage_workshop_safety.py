@@ -1,13 +1,12 @@
-"""heritage_workshop_safety 领域资料的基础结构。"""
+"""heritage_workshop_safety 领域资料的基础结构（兼容入口）。
+
+批次放行流程落地后，事件种类与字段校验的实现迁移到 :mod:`src.events`，
+领域流程见 :mod:`src.release`；本模块保留原有名称的再导出，
+既有资料与脚本无需改动。
+"""
 
 from __future__ import annotations
 
-EVENT_KINDS = ['CRAFT_VERSIONED', 'MATERIAL_RECEIVED', 'SESSION_CLEARED', 'INCIDENT_REPORTED', 'BATCH_RELEASED']
-REQUIRED_FIELDS = ("event_id", "kind", "occurred_at", "subject_id", "payload")
+from .events import EVENT_KINDS, REQUIRED_FIELDS, validate_event
 
-def validate_event(record: dict) -> list[str]:
-    """检查样例事件是否具备可交换的最小字段。"""
-    problems = [name for name in REQUIRED_FIELDS if name not in record]
-    if record.get("kind") not in EVENT_KINDS:
-        problems.append("kind")
-    return problems
+__all__ = ["EVENT_KINDS", "REQUIRED_FIELDS", "validate_event"]

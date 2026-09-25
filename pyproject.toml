@@ -1,7 +1,7 @@
 [project]
 name = "heritage-workshop-safety"
-version = "0.1.0"
-description = "非遗体验安全放行领域资料"
+version = "0.2.0"
+description = "非遗体验批次安全放行领域资料与流程服务"
 requires-python = ">=3.11"
 
 [tool.unittest]
